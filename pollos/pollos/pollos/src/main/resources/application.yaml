@@ -1,0 +1,28 @@
+
+spring: # Seccion principal de spring
+  application:
+    name: pollos
+
+  datasource: # Configuracion de la conexion a base de datos
+    url: jdbc:mysql://localhost:3306/pollos_adso
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver # Driver específico para MySQL
+
+  jpa: #Configuración del ORM en nuestra aplicación
+    hibernate:
+      ddl-auto: none # Crea/actualiza tablas automáticamente en la bd
+    show-sql: true # Muestra que sql se está ejecutando
+    properties: # Propiedad del jpa
+      hibernate:
+        format_sql: true # Le da un formato a nuestras consultas para mejor legibilidad
+    database-platform: org.hibernate.dialect.MySQLDialect # Sintaxis o dialecto para MySQL
+
+server: # Configuración del servidor
+  port: 8081 # Número de puerto que corre nuestra aplicación
+
+logging: # Sección de logs
+  level: # niveles por paquete / clases
+    org.springframework.web: DEBUG  #Logs detallados para aplicación web
+    org.hibernate.SQL: DEBUG #Mostrar las consultas SQL que se hacen
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE # Mostrar los valores de la consulta sql

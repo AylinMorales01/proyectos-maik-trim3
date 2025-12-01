@@ -97,4 +97,15 @@ public class UsuarioService {
             return Optional.empty();
         }
     }
-}
+
+    public boolean eliminarUsuario(Long id) {
+        Optional<Usuario> optionalUsuario = usuarioRepository.findById(id);
+
+        if (optionalUsuario.isPresent()) {
+            usuarioRepository.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
+    }
+} 
